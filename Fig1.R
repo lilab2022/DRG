@@ -345,7 +345,7 @@ dev.off()
 
 
 ## Fig1i -------------------------------------------DEGs--------------------------------------------------------
-#绘图
+
 allmarkers <- read.csv('E:/R/DRG/Fig1/all_spe_dge.csv')
 allup <- filter(allmarkers, allmarkers$Significant == 'Up')
 alldown <-filter(allmarkers, allmarkers$Significant == 'Down')
