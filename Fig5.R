@@ -56,27 +56,12 @@ pic_pro <- pic(traits$Proportion, oTree)
 
 
 # pic_module_proportion
-fitpic_proportion <- lm(pic_pro ~ pic_neu)
-summary(fitpic)
-anova(fitpic)
-coef(fitpic)
-
-pdf('./PIC_pro.pdf',width = 7,height = 7)
-plot(pic_neu, pic_pro, pch = 21, col = 'black', bg = 'cyan', cex = 2.5)
-abline(a = 0, b = coef(fitpic)[2], lwd = 1.5)
-dev.off()
-
+cor_pro <- cor.test(pic_neu, pic_pro, 
+                    meth='spearman') 
 
 # pic_module_counts
-fitpic_counts <- lm(pic_p2ry12 ~ pic_neu)
-summary(fitpicp)
-anova(fitpicp)
-coef(fitpicp)
-
-pdf('./PIC_counts.pdf',width = 7,height = 7)
-plot(pic_neu, pic_p2ry12, pch = 21, col = 'black', bg = 'cyan', cex = 2.5)
-abline(a = 0, b = coef(fitpicp)[2], lwd = 1.5)
-dev.off()
+cor_counts <- cor.test(pic_neu, pic_p2ry12, 
+                       meth='spearman')
 
 
 ## FigS5c -----------------------------------MCMCglmm, PGLS------------------------------------------------------------
@@ -115,7 +100,7 @@ dev.off()
   prior <- list(G = list(G1 = list(V = 1, nu = 0.02)),
                 R = list(V = 1, nu = 0.02))
   
-  nitt <- 2000000
+  nitt <- 10000000
   thin <- 1000
   burnin <- 10000
 
