@@ -5,7 +5,7 @@ setwd('E:/R/DRG/Fig3')
 
 
 
-
+# --------------------- DEseq2 ------------------------------------
 dat <- read.table('E:/R/DRG/Fig4/Atac_merged.counts', header = T, row.names = 1)
 head(dat)
 coldata <- read.csv('E:/R/DRG/Fig4/atac_info.csv', row.names = 1)
@@ -59,10 +59,7 @@ pheatmap(r,
          color = colorRampPalette(c('navyblue','#ffffff',  'red'))(101),
          annotation_legend=TRUE, 
          border_color=NA,        
-         scale="none",           
-         #clustering_method = "median",
-         #display_numbers = T,
-         #number_format = "%.2f",
+         scale="none",      
          breaks=unique(c(seq(-0.8,.8, length=101))),
          main = 'atac')
 dev.off()
