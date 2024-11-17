@@ -11,7 +11,7 @@ library(Monocle3)
 library(ggalluvial)
 library(ImageGP)
 library(ClusterGVis)
-setwd('E:/R/DRG/Fig3')
+setwd('E:/R/DRG/Fig4')
 
 
 ## Fig4F 
