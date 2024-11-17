@@ -14,7 +14,7 @@ library(ClusterGVis)
 setwd('E:/R/DRG/Fig4')
 
 
-## Fig4F 
+## Fig4D 
 # --------------------------------------------Monocle3 cell order----------------------------------------------------------
 fdg <- read.csv('E:/R/DRG/Fig4/fdg_meta.csv')
 counts <- Read10X(data.dir = "E:/R/DRG/Fig4/dsspv2/")
@@ -147,7 +147,7 @@ macm <- macm[, -1]
 
 ms <- merge(microm, macm, by = 'mcid')
 
-# -----------------------------------merge the above objects and plot figs--------------------------------------------------
+# -----------------------------------merge the above objects--------------------------------------------------
 cor_merge <- merge(dpm, orderm, by = 'mcid')
 cor_merge <- merge(cor_merge, cytom[, c('mcid', 'Rank')], by = 'mcid')
 cor_merge <- merge(cor_merge, ms, by = 'mcid')
@@ -162,16 +162,3 @@ cor_merge$Group <- ifelse(cor_merge$anno %in% c('Microglia precursor', 'Microgli
 cor_merge$Group <- ifelse(cor_merge$anno %in% c('PNS microglia precursor', 'PNS microglia'), 'c', too$Group)
 write.csv(cor_merge, './cor_figs.csv')
 
-    # plot
-p = ggplot(cor_merge, aes(x = timeorder, y = day)) +
-    geom_point(aes(x = timeorder, y = day , fill = anno), color = 'grey40', shape = 21, size = 8) +
-    scale_fill_manual(values=rev(c('#921D39', '#9DB81F', '#D25690', "#E8B885", '#3AB69C'))) +
-    geom_smooth(data = subset(cor_merge, Group %in% c("a", 'c')), method = lm, fill = "lightpink", color = "red") +
-    geom_smooth(data = subset(cor_merge, Group %in% c("a", 'b')), method = lm, fill = "#B2DF8A", color = "#33A02C") +
-    stat_cor(method = "pearson",
-             data = subset(cor_merge, Group %in% c("a", 'c')), color = 'red') +
-    stat_cor(method = "pearson", 
-             data = subset(cor_merge, Group %in% c("a", 'b')), color = '#33A02C') +
-    drg_theme()
-p 
-ggsave(p, filename='./monocle3_day.pdf',width = 6.5, height = 4.8, dpi=300, units = "in", device='pdf')
