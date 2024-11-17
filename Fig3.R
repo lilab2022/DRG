@@ -1,4 +1,4 @@
-# Fig3 PNS microglia differentiate in parallel with CNS microglia during human prenatal development.
+# Fig4 PNS microglia differentiate in parallel with CNS microglia during human prenatal development.
 library(SingleR)
 library(celldex)
 library(pheatmap)
@@ -14,7 +14,7 @@ library(ClusterGVis)
 setwd('E:/R/DRG/Fig3')
 
 
-## Fig3F 
+## Fig4F 
 # --------------------------------------------Monocle3 cell order----------------------------------------------------------
 fdg <- read.csv('E:/R/DRG/Fig3/fdg_meta.csv')
 counts <- Read10X(data.dir = "E:/R/DRG/Fig3/dsspv2/")
