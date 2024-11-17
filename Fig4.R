@@ -16,8 +16,8 @@ setwd('E:/R/DRG/Fig3')
 
 ## Fig4F 
 # --------------------------------------------Monocle3 cell order----------------------------------------------------------
-fdg <- read.csv('E:/R/DRG/Fig3/fdg_meta.csv')
-counts <- Read10X(data.dir = "E:/R/DRG/Fig3/dsspv2/")
+fdg <- read.csv('E:/R/DRG/Fig4/fdg_meta.csv')
+counts <- Read10X(data.dir = "E:/R/DRG/Fig4/dsspv2/")
 counts <- as.matrix(counts[, fdg$cellid])
 gene_ann <- as.data.frame(rownames(counts), row.names = rownames(counts))
 colnames(gene_ann) <- c('gene_short_name')
